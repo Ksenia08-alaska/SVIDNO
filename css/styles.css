@@ -1392,3 +1392,26 @@ button{touch-action:manipulation;}
   .nav-links a{font-size:0.86rem;}
   .nav-cta{padding:9px 14px;font-size:0.84rem;}
 }
+
+/* =========================================================
+   Line icons (instead of text symbols that phones turn into emoji)
+   ========================================================= */
+.ic{width:1em;height:1em;fill:none;stroke:currentColor;stroke-width:1.8;stroke-linecap:round;stroke-linejoin:round;display:block;}
+.ic-ext{display:inline-block;width:1.05em;height:1.05em;margin-left:8px;vertical-align:-0.15em;}
+.lb-close .ic,.chat-panel-close .ic,.privacy-close .ic{width:22px;height:22px;}
+.lb-prev .ic,.lb-next .ic{width:34px;height:34px;stroke-width:1.5;}
+@media (max-width:480px){.lb-prev .ic,.lb-next .ic{width:28px;height:28px;}}
+
+/* hero title: don't clip descenders (у, р, д) or the italic tail */
+.hero-title .line{overflow:visible;}
+.hero-title em{padding:0 0.14em 0.16em 0;margin:0 -0.14em -0.16em 0;}
+
+/* bigger touch targets */
+.footer-link{padding:10px 0;margin:-10px 0;}
+.reel-seg{height:32px;}
+.reel-progress{top:10px;}
+@media (max-width:700px){.reel-progress{top:4px;}}
+
+/* ceiling cards: big number was overridden by ".ceiling-card span" */
+.ceiling-card .ceiling-num{display:block;font-family:var(--serif);font-size:2.1rem;line-height:1.15;color:var(--copper-600);margin-bottom:4px;}
+@media (max-width:700px){.ceiling-card .ceiling-num{font-size:1.8rem;}}
