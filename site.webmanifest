@@ -1,0 +1,12 @@
+{
+  "name": "SVIDNO HOUSE",
+  "short_name": "SVIDNO HOUSE",
+  "description": "Проект у воды для жизни и дохода — деревня Свидно, Логойский район",
+  "start_url": "/",
+  "display": "standalone",
+  "background_color": "#0E1B15",
+  "theme_color": "#0E1B15",
+  "icons": [
+    { "src": "favicon.svg", "sizes": "any", "type": "image/svg+xml" }
+  ]
+}
