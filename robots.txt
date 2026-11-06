@@ -1,4 +1,4 @@
 User-agent: *
 Allow: /
 
-Sitemap: https://svidno-house.example/sitemap.xml
+Sitemap: https://svidno.svhouse-api.by/sitemap.xml

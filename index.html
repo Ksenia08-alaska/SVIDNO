@@ -6,19 +6,19 @@
 <title>SVIDNO HOUSE — проект у воды для жизни и дохода</title>
 <meta name="description" content="SVIDNO HOUSE — комплекс из трёх строений у воды в Логойском районе: корпус с номерами, вилла и баня. Готовая основа retreat-бизнеса в 52 минутах от Минска.">
 <meta name="theme-color" content="#0E1B15">
-<link rel="canonical" href="https://svidno-house.example/">
+<link rel="canonical" href="https://svidno.svhouse-api.by/">
 
 <!-- Open Graph / мессенджеры -->
 <meta property="og:type" content="website">
 <meta property="og:title" content="SVIDNO HOUSE — проект у воды для жизни и дохода">
 <meta property="og:description" content="Комплекс из трёх строений у воды в Логойском районе: корпус с номерами, вилла и баня. Готовая основа retreat-бизнеса в 52 минутах от Минска.">
-<meta property="og:image" content="https://svidno-house.example/images/hero.jpg">
-<meta property="og:url" content="https://svidno-house.example/">
+<meta property="og:image" content="https://svidno.svhouse-api.by/images/hero.jpg">
+<meta property="og:url" content="https://svidno.svhouse-api.by/">
 <meta property="og:locale" content="ru_RU">
 <meta name="twitter:card" content="summary_large_image">
 <meta name="twitter:title" content="SVIDNO HOUSE — проект у воды для жизни и дохода">
 <meta name="twitter:description" content="Комплекс из трёх строений у воды: номера, вилла, баня. 52 минуты от Минска.">
-<meta name="twitter:image" content="https://svidno-house.example/images/hero.jpg">
+<meta name="twitter:image" content="https://svidno.svhouse-api.by/images/hero.jpg">
 
 <link rel="icon" href="favicon.svg" type="image/svg+xml">
 <link rel="apple-touch-icon" href="favicon.svg">
@@ -41,6 +41,7 @@
     <nav class="nav-links" id="navLinks">
       <span class="nav-pill" id="navPill" aria-hidden="true"></span>
       <a href="#concept" data-nav>Идея</a>
+      <a href="#aerial" data-nav>Видео</a>
       <a href="#products" data-nav>Строения</a>
       <a href="#location" data-nav>Локация</a>
       <a href="#numbers" data-nav>Экономика</a>
@@ -49,7 +50,7 @@
       <button class="nav-cta nav-cta-mobile" type="button" data-open-chat>Написать нам</button>
     </nav>
     <button class="nav-cta" type="button" data-open-chat>Написать нам</button>
-    <button class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
+    <button type="button" class="nav-toggle" id="navToggle" aria-label="Открыть меню" aria-expanded="false">
       <span></span><span></span><span></span>
     </button>
   </div>
@@ -61,7 +62,7 @@
   <!-- HERO -->
   <section class="hero" id="hero">
     <div class="hero-media">
-      <img src="images/hero.jpg" alt="Баня у воды в комплексе SVIDNO HOUSE, деревня Свидно" id="heroImg">
+      <img src="images/hero.webp" fetchpriority="high" alt="Баня у воды в комплексе SVIDNO HOUSE, деревня Свидно" id="heroImg">
       <div class="hero-scrim"></div>
     </div>
     <div class="hero-content">
@@ -92,17 +93,67 @@
         <p class="lead-text">Три строения, вода, приватная территория и уже сформированная концепция позволяют запускать объект поэтапно — от бани и номеров до полного комплекса. Каждую часть можно продавать отдельно или собрать в единый выкуп.</p>
         <div class="stat-row">
           <div class="stat" data-count="3" data-suffix="">
-            <span class="stat-num">0</span>
+            <span class="stat-num">3</span>
             <span class="stat-label">самостоятельных продукта<br><span class="stat-sub">номера · вилла · баня</span></span>
           </div>
           <div class="stat" data-count="46" data-suffix="">
-            <span class="stat-num">0</span>
+            <span class="stat-num">46</span>
             <span class="stat-label">реальных фотографии<br><span class="stat-sub">полный архив ниже на странице</span></span>
           </div>
           <div class="stat" data-count="1312678" data-suffix="">
-            <span class="stat-num">0</span>
+            <span class="stat-num">1&nbsp;312&nbsp;678</span>
             <span class="stat-label">BYN/год в базовой модели<br><span class="stat-sub">валовые бронирования, до расходов</span></span>
           </div>
+        </div>
+      </div>
+    </div>
+  </section>
+
+  <!-- AERIAL: drone reel + YouTube review -->
+  <section class="section aerial" id="aerial">
+    <div class="wrap">
+      <p class="kicker kicker-light">Вид с дрона</p>
+      <h2 data-reveal>Комплекс и окрестности с высоты</h2>
+
+      <div class="reel" id="reel">
+        <div class="reel-stage" id="reelStage">
+          <video class="reel-video is-active" muted playsinline preload="none" poster="video/aerial-01.webp" aria-hidden="true"></video>
+          <video class="reel-video" muted playsinline preload="none" aria-hidden="true"></video>
+          <div class="reel-shade" aria-hidden="true"></div>
+        </div>
+
+        <div class="reel-progress" role="group" aria-label="Кадры с дрона">
+          <button type="button" class="reel-seg is-active" data-src="video/aerial-01.mp4" data-src-sd="video/aerial-01-sd.mp4" data-poster="video/aerial-01.webp" data-title="Комплекс" aria-label="Кадр 1: Комплекс"><i></i></button>
+          <button type="button" class="reel-seg" data-src="video/aerial-02.mp4" data-src-sd="video/aerial-02-sd.mp4" data-poster="video/aerial-02.webp" data-title="Комплекс и пруд" aria-label="Кадр 2: Комплекс и пруд"><i></i></button>
+          <button type="button" class="reel-seg" data-src="video/aerial-03.mp4" data-src-sd="video/aerial-03-sd.mp4" data-poster="video/aerial-03.webp" data-title="Пруд" aria-label="Кадр 3: Пруд"><i></i></button>
+          <button type="button" class="reel-seg" data-src="video/aerial-04.mp4" data-src-sd="video/aerial-04-sd.mp4" data-poster="video/aerial-04.webp" data-title="Лес вокруг" aria-label="Кадр 4: Лес вокруг"><i></i></button>
+          <button type="button" class="reel-seg" data-src="video/aerial-05.mp4" data-src-sd="video/aerial-05-sd.mp4" data-poster="video/aerial-05.webp" data-title="Излучина реки" aria-label="Кадр 5: Излучина реки"><i></i></button>
+          <button type="button" class="reel-seg" data-src="video/aerial-06.mp4" data-src-sd="video/aerial-06-sd.mp4" data-poster="video/aerial-06.webp" data-title="Долина реки" aria-label="Кадр 6: Долина реки"><i></i></button>
+        </div>
+
+        <div class="reel-caption" aria-live="polite">
+          <span class="reel-count" id="reelCount">01 / 06</span>
+          <span class="reel-title" id="reelTitle">Комплекс</span>
+        </div>
+
+        <button type="button" class="reel-toggle" id="reelToggle" aria-label="Пауза">
+          <svg class="ic-pause" viewBox="0 0 24 24" aria-hidden="true"><rect x="6.5" y="5" width="3.6" height="14" rx="1"/><rect x="13.9" y="5" width="3.6" height="14" rx="1"/></svg>
+          <svg class="ic-play" viewBox="0 0 24 24" aria-hidden="true"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z"/></svg>
+        </button>
+      </div>
+
+      <div class="yt">
+        <div class="yt-player" id="ytPlayer" data-yt="uR3Zp_fHvhU">
+          <button type="button" class="yt-load" id="ytLoad" aria-label="Смотреть видеообзор на YouTube">
+            <img src="video/youtube-poster.webp" alt="Видеообзор SVIDNO HOUSE" loading="lazy" width="1280" height="720">
+            <span class="yt-play" aria-hidden="true"><svg viewBox="0 0 24 24"><path d="M8 5.2v13.6a.8.8 0 0 0 1.2.7l10.6-6.8a.8.8 0 0 0 0-1.4L9.2 4.5A.8.8 0 0 0 8 5.2z"/></svg></span>
+          </button>
+        </div>
+        <div class="yt-text">
+          <p class="kicker kicker-light">Видеообзор</p>
+          <h3>Полный обзор объекта на YouTube</h3>
+          <p class="yt-note">YouTube использует собственные cookie — видео загрузится после нажатия.</p>
+          <a class="btn btn-ghost-light" href="https://youtu.be/uR3Zp_fHvhU" target="_blank" rel="noopener">Открыть на YouTube&nbsp;↗</a>
         </div>
       </div>
     </div>
@@ -118,15 +169,15 @@
       <div class="product-tabs" id="productTabs">
         <div class="product-tab-list" role="tablist" aria-label="Строения комплекса">
           <span class="tab-pill" id="tabPill" aria-hidden="true"></span>
-          <button class="product-tab is-active" role="tab" aria-selected="true" data-target="rooms">
+          <button type="button" class="product-tab is-active" role="tab" aria-selected="true" data-target="rooms">
             <span class="pt-name">Корпус с номерами</span>
             <span class="pt-meta">5 студий · короткие заезды</span>
           </button>
-          <button class="product-tab" role="tab" aria-selected="false" data-target="villa">
+          <button type="button" class="product-tab" role="tab" aria-selected="false" data-target="villa">
             <span class="pt-name">Вилла</span>
             <span class="pt-meta">приватный дом · семьи и компании</span>
           </button>
-          <button class="product-tab" role="tab" aria-selected="false" data-target="banya">
+          <button type="button" class="product-tab" role="tab" aria-selected="false" data-target="banya">
             <span class="pt-name">Баня у воды</span>
             <span class="pt-meta">сруб на берегу · доходный якорь</span>
           </button>
@@ -135,7 +186,7 @@
         <div class="product-panels">
           <article class="product-panel is-active" id="panel-rooms" role="tabpanel">
             <div class="product-media">
-              <img src="images/rooms-1.jpg" alt="Фасад корпуса с номерами из дерева и стекла">
+              <img src="images/rooms-1.webp" srcset="images/thumbs/rooms-1.webp 720w, images/rooms-1.webp 1537w" sizes="(max-width:800px) 100vw, 640px" alt="Фасад корпуса с номерами из дерева и стекла">
               <span class="media-tag">Реальное фото</span>
             </div>
             <div class="product-info">
@@ -152,7 +203,7 @@
 
           <article class="product-panel" id="panel-villa" role="tabpanel">
             <div class="product-media">
-              <img src="images/villa-render.jpg" alt="Визуализация проекта отдельной виллы SVIDNO HOUSE">
+              <img src="images/villa-render.webp" srcset="images/thumbs/villa-render.webp 720w, images/villa-render.webp 1280w" sizes="(max-width:800px) 100vw, 640px" alt="Визуализация проекта отдельной виллы SVIDNO HOUSE">
               <span class="media-tag media-tag-accent">Визуализация проекта</span>
             </div>
             <div class="product-info">
@@ -169,7 +220,7 @@
 
           <article class="product-panel" id="panel-banya" role="tabpanel">
             <div class="product-media">
-              <img src="images/banya-1.jpg" alt="Баня у воды — сруб с террасой на берегу пруда">
+              <img src="images/banya-1.webp" srcset="images/thumbs/banya-1.webp 720w, images/banya-1.webp 1536w" sizes="(max-width:800px) 100vw, 640px" alt="Баня у воды — сруб с террасой на берегу пруда">
               <span class="media-tag">Реальное фото</span>
             </div>
             <div class="product-info">
@@ -187,9 +238,9 @@
       </div>
 
       <div class="products-strip">
-        <figure><img src="images/rooms-interior-1.jpg" alt="Панорамное остекление номера с видом на сосны"><figcaption>Панорамное остекление — главный аргумент номера</figcaption></figure>
-        <figure><img src="images/banya-porch.jpg" alt="Терраса бани с массивными деревянными опорами"><figcaption>Массивные опоры и терраса бани</figcaption></figure>
-        <figure><img src="images/territory-fire.jpg" alt="Костровая зона на территории комплекса"><figcaption>Костровая зона — в работе</figcaption></figure>
+        <figure><img src="images/rooms-interior-1.webp" srcset="images/thumbs/rooms-interior-1.webp 720w, images/rooms-interior-1.webp 1536w" sizes="(max-width:700px) 82vw, 390px" alt="Панорамное остекление номера с видом на сосны"><figcaption>Панорамное остекление — главный аргумент номера</figcaption></figure>
+        <figure><img src="images/banya-porch.webp" srcset="images/thumbs/banya-porch.webp 720w, images/banya-porch.webp 1086w" sizes="(max-width:700px) 82vw, 390px" alt="Терраса бани с массивными деревянными опорами"><figcaption>Массивные опоры и терраса бани</figcaption></figure>
+        <figure><img src="images/territory-fire.webp" srcset="images/thumbs/territory-fire.webp 720w, images/territory-fire.webp 960w" sizes="(max-width:700px) 82vw, 390px" alt="Костровая зона на территории комплекса"><figcaption>Костровая зона — в работе</figcaption></figure>
       </div>
     </div>
   </section>
@@ -232,7 +283,7 @@
   <section class="section siteplan">
     <div class="wrap siteplan-grid">
       <div class="siteplan-media" data-reveal>
-        <img src="images/siteplan.jpg" alt="Генплан комплекса SVIDNO HOUSE: корпус с номерами, вилла и баня">
+        <img src="images/siteplan.webp" srcset="images/thumbs/siteplan.webp 720w, images/siteplan.webp 1280w" sizes="(max-width:900px) 100vw, 640px" alt="Генплан комплекса SVIDNO HOUSE: корпус с номерами, вилла и баня">
         <span class="media-tag">Визуализация проекта</span>
       </div>
       <div class="siteplan-text">
@@ -268,10 +319,10 @@
         <p class="kicker">Круглый год</p>
         <h3>Один адрес закрывает несколько причин для поездки</h3>
         <div class="season-toggle" role="tablist" aria-label="Сезоны">
-          <button class="season-btn is-active" data-season="winter">Зима</button>
-          <button class="season-btn" data-season="spring">Весна</button>
-          <button class="season-btn" data-season="summer">Лето</button>
-          <button class="season-btn" data-season="autumn">Осень</button>
+          <button type="button" class="season-btn is-active" data-season="winter">Зима</button>
+          <button type="button" class="season-btn" data-season="spring">Весна</button>
+          <button type="button" class="season-btn" data-season="summer">Лето</button>
+          <button type="button" class="season-btn" data-season="autumn">Осень</button>
         </div>
         <div class="season-panels">
           <div class="season-panel is-active" data-season-panel="winter">
@@ -294,7 +345,7 @@
   <!-- BRAND QUOTE -->
   <section class="section brand-quote">
     <div class="brand-quote-media">
-      <img src="images/lake-view.jpg" alt="Вид на пруд и лес с кровли SVIDNO HOUSE">
+      <img src="images/lake-view.webp" alt="Вид на пруд и лес с кровли SVIDNO HOUSE">
       <div class="hero-scrim brand-quote-scrim"></div>
     </div>
     <div class="wrap brand-quote-inner">
@@ -315,11 +366,11 @@
       <h2 data-reveal>История стройки подтверждает последовательность работ и материалы</h2>
       <p class="section-intro">Полный визуальный архив прикладывается к сделке, но дополняет — а не заменяет — техническое обследование, исполнительную документацию и проверку разрешений.</p>
       <div class="construction-strip">
-        <figure><img src="images/construction-frame.jpg" alt="Каркас корпуса с номерами и панорамные окна"><figcaption>Каркас и окна</figcaption></figure>
-        <figure><img src="images/banya-detail-1.jpg" alt="Соединения деревянных опор бани"><figcaption>Соединения сруба</figcaption></figure>
-        <figure><img src="images/construction-interior.jpg" alt="Внутренний объём корпуса с номерами на этапе стройки"><figcaption>Внутренний объём</figcaption></figure>
-        <figure><img src="images/rooms-3.jpg" alt="Кровля корпуса с номерами"><figcaption>Кровля</figcaption></figure>
-        <figure><img src="images/construction-stairs.jpg" alt="Внутренняя отделка и лестница"><figcaption>Частичная отделка</figcaption></figure>
+        <figure><img src="images/construction-frame.webp" srcset="images/thumbs/construction-frame.webp 720w, images/construction-frame.webp 960w" sizes="(max-width:820px) 50vw, 236px" alt="Каркас корпуса с номерами и панорамные окна"><figcaption>Каркас и окна</figcaption></figure>
+        <figure><img src="images/banya-detail-1.webp" srcset="images/thumbs/banya-detail-1.webp 720w, images/banya-detail-1.webp 1280w" sizes="(max-width:820px) 50vw, 236px" alt="Соединения деревянных опор бани"><figcaption>Соединения сруба</figcaption></figure>
+        <figure><img src="images/construction-interior.webp" srcset="images/thumbs/construction-interior.webp 720w, images/construction-interior.webp 1280w" sizes="(max-width:820px) 50vw, 236px" alt="Внутренний объём корпуса с номерами на этапе стройки"><figcaption>Внутренний объём</figcaption></figure>
+        <figure><img src="images/rooms-3.webp" srcset="images/thumbs/rooms-3.webp 720w, images/rooms-3.webp 1280w" sizes="(max-width:820px) 50vw, 236px" alt="Кровля корпуса с номерами"><figcaption>Кровля</figcaption></figure>
+        <figure><img src="images/construction-stairs.webp" srcset="images/thumbs/construction-stairs.webp 720w, images/construction-stairs.webp 960w" sizes="(max-width:820px) 50vw, 236px" alt="Внутренняя отделка и лестница"><figcaption>Частичная отделка</figcaption></figure>
       </div>
     </div>
   </section>
@@ -372,7 +423,7 @@
       </div>
 
       <figure class="numbers-photo-break">
-        <img src="images/banya-2.jpg" alt="Баня у воды — самый быстро монетизируемый актив комплекса" loading="lazy">
+        <img src="images/banya-2.webp" srcset="images/thumbs/banya-2.webp 720w, images/banya-2.webp 1537w" sizes="(max-width:1180px) 100vw, 1116px" alt="Баня у воды — самый быстро монетизируемый актив комплекса" loading="lazy">
         <figcaption>Баня у воды — самый эмоциональный и быстро монетизируемый актив комплекса</figcaption>
       </figure>
 
@@ -380,9 +431,9 @@
         <h3 class="numbers-h3">Годовой сценарий валовых бронирований</h3>
         <p class="fine-print">Расчёт: ставка × загрузка × 365 дней; баня — ставка × количество банных дней в году.</p>
         <div class="scenario-toggle" role="tablist" aria-label="Сценарии выручки">
-          <button class="scenario-btn" data-scenario="conservative">Консервативный</button>
-          <button class="scenario-btn is-active" data-scenario="base">Базовый</button>
-          <button class="scenario-btn" data-scenario="strong">Сильный</button>
+          <button type="button" class="scenario-btn" data-scenario="conservative">Консервативный</button>
+          <button type="button" class="scenario-btn is-active" data-scenario="base">Базовый</button>
+          <button type="button" class="scenario-btn" data-scenario="strong">Сильный</button>
         </div>
 
         <div class="scenario-display">
@@ -407,7 +458,7 @@
   <!-- DEAL VALUE -->
   <section class="section deal-value">
     <div class="deal-value-media">
-      <img src="images/territory-dock.jpg" alt="Причал на пруду в комплексе SVIDNO HOUSE">
+      <img src="images/territory-dock.webp" alt="Причал на пруду в комплексе SVIDNO HOUSE">
       <div class="hero-scrim deal-value-scrim"></div>
     </div>
     <div class="wrap">
@@ -437,7 +488,7 @@
         </svg>
         <div class="timeline-steps">
           <div class="timeline-step" data-step>
-            <img class="ts-photo" src="images/siteplan.jpg" alt="Аудит и генплан комплекса" loading="lazy">
+            <img class="ts-photo" src="images/siteplan.webp" srcset="images/thumbs/siteplan.webp 720w, images/siteplan.webp 1280w" sizes="(max-width:820px) 100vw, 370px" alt="Аудит и генплан комплекса" loading="lazy">
             <span class="ts-range">0–30 дней</span>
             <ul>
               <li>аудит документов и конструкций</li>
@@ -446,7 +497,7 @@
             </ul>
           </div>
           <div class="timeline-step" data-step>
-            <img class="ts-photo" src="images/construction-interior.jpg" alt="Завершение инженерии и отделки" loading="lazy">
+            <img class="ts-photo" src="images/construction-interior.webp" srcset="images/thumbs/construction-interior.webp 720w, images/construction-interior.webp 1280w" sizes="(max-width:820px) 100vw, 370px" alt="Завершение инженерии и отделки" loading="lazy">
             <span class="ts-range">31–60 дней</span>
             <ul>
               <li>завершение инженерии и отделки</li>
@@ -455,7 +506,7 @@
             </ul>
           </div>
           <div class="timeline-step" data-step>
-            <img class="ts-photo" src="images/banya-porch.jpg" alt="Готовый объект перед запуском" loading="lazy">
+            <img class="ts-photo" src="images/banya-porch.webp" srcset="images/thumbs/banya-porch.webp 720w, images/banya-porch.webp 1086w" sizes="(max-width:820px) 100vw, 370px" alt="Готовый объект перед запуском" loading="lazy">
             <span class="ts-range">61–100 дней</span>
             <ul>
               <li>фотосъёмка после готовности</li>
@@ -507,32 +558,32 @@
       <p class="section-intro section-intro-light">Фасады, интерьеры, территория, вода, этапы строительства и проектные визуализации. Ниже — отобранная витрина архива; полный комплект прикладывается к сделке.</p>
 
       <div class="gallery-filters" id="galleryFilters">
-        <button class="gf-btn is-active" data-filter="all">Все</button>
-        <button class="gf-btn" data-filter="facade">Фасады</button>
-        <button class="gf-btn" data-filter="interior">Интерьеры</button>
-        <button class="gf-btn" data-filter="site">Территория и вода</button>
-        <button class="gf-btn" data-filter="build">Стройка</button>
+        <button type="button" class="gf-btn is-active" data-filter="all">Все</button>
+        <button type="button" class="gf-btn" data-filter="facade">Фасады</button>
+        <button type="button" class="gf-btn" data-filter="interior">Интерьеры</button>
+        <button type="button" class="gf-btn" data-filter="site">Территория и вода</button>
+        <button type="button" class="gf-btn" data-filter="build">Стройка</button>
       </div>
 
       <div class="gallery-grid" id="galleryGrid">
-        <button class="g-item" data-filter="facade" data-full="images/rooms-1.jpg" data-caption="Фасад корпуса с номерами"><img src="images/rooms-1.jpg" alt="Фасад корпуса с номерами" loading="lazy"></button>
-        <button class="g-item" data-filter="site" data-full="images/gallery-08.jpg" data-caption="Костровая зона, вид с территории"><img src="images/gallery-08.jpg" alt="Костровая зона" loading="lazy"></button>
-        <button class="g-item" data-filter="interior" data-full="images/rooms-interior-2.jpg" data-caption="Терраса и панорамное остекление"><img src="images/rooms-interior-2.jpg" alt="Интерьер с панорамным остеклением" loading="lazy"></button>
-        <button class="g-item" data-filter="facade" data-full="images/banya-2.jpg" data-caption="Баня у воды, фасад"><img src="images/banya-2.jpg" alt="Баня у воды" loading="lazy"></button>
-        <button class="g-item" data-filter="build" data-full="images/construction-frame.jpg" data-caption="Каркас и панорамные окна на этапе стройки"><img src="images/construction-frame.jpg" alt="Каркас на этапе строительства" loading="lazy"></button>
-        <button class="g-item" data-filter="site" data-full="images/territory-dock.jpg" data-caption="Причал на пруду"><img src="images/territory-dock.jpg" alt="Деревянный причал на воде" loading="lazy"></button>
-        <button class="g-item" data-filter="interior" data-full="images/construction-stairs.jpg" data-caption="Лестница и внутренняя отделка"><img src="images/construction-stairs.jpg" alt="Лестница и отделка интерьера" loading="lazy"></button>
-        <button class="g-item" data-filter="facade" data-full="images/villa-render.jpg" data-caption="Визуализация виллы"><img src="images/villa-render.jpg" alt="Визуализация проекта виллы" loading="lazy"></button>
-        <button class="g-item" data-filter="site" data-full="images/lake-view.jpg" data-caption="Вид на пруд и лес с кровли"><img src="images/lake-view.jpg" alt="Вид на пруд и лес" loading="lazy"></button>
-        <button class="g-item" data-filter="build" data-full="images/joint-detail.jpg" data-caption="Деталь бревенчатого соединения"><img src="images/joint-detail.jpg" alt="Деревянное соединение сруба" loading="lazy"></button>
-        <button class="g-item" data-filter="build" data-full="images/gallery-17.jpg" data-caption="Кровельные работы"><img src="images/gallery-17.jpg" alt="Кровельные работы" loading="lazy"></button>
-        <button class="g-item" data-filter="site" data-full="images/territory-sign.jpg" data-caption="Адресная табличка комплекса"><img src="images/territory-sign.jpg" alt="Адресная табличка" loading="lazy"></button>
-        <button class="g-item" data-filter="facade" data-full="images/banya-porch.jpg" data-caption="Терраса бани с массивными опорами"><img src="images/banya-porch.jpg" alt="Терраса бани" loading="lazy"></button>
-        <button class="g-item" data-filter="build" data-full="images/gallery-15.jpg" data-caption="Деревянные конструкции крыши"><img src="images/gallery-15.jpg" alt="Деревянные конструкции" loading="lazy"></button>
-        <button class="g-item" data-filter="site" data-full="images/gallery-10.jpg" data-caption="Дорога и подъезд к участку"><img src="images/gallery-10.jpg" alt="Подъездная дорога" loading="lazy"></button>
-        <button class="g-item" data-filter="interior" data-full="images/rooms-interior-3.jpg" data-caption="Интерьер номера, вид на территорию"><img src="images/rooms-interior-3.jpg" alt="Интерьер номера" loading="lazy"></button>
-        <button class="g-item" data-filter="facade" data-full="images/rooms-3.jpg" data-caption="Кровля корпуса с номерами"><img src="images/rooms-3.jpg" alt="Кровля корпуса с номерами" loading="lazy"></button>
-        <button class="g-item" data-filter="site" data-full="images/gallery-18.jpg" data-caption="Территория комплекса"><img src="images/gallery-18.jpg" alt="Территория комплекса" loading="lazy"></button>
+        <button type="button" class="g-item g-wide" data-filter="facade" data-full="images/rooms-1.webp" data-caption="Фасад корпуса с номерами"><img src="images/rooms-1.webp" srcset="images/thumbs/rooms-1.webp 720w, images/rooms-1.webp 1537w" sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 380px" alt="Фасад корпуса с номерами" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="site" data-full="images/gallery-08.webp" data-caption="Костровая зона, вид с территории"><img src="images/gallery-08.webp" srcset="images/thumbs/gallery-08.webp 720w, images/gallery-08.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Костровая зона" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="interior" data-full="images/rooms-interior-2.webp" data-caption="Терраса и панорамное остекление"><img src="images/rooms-interior-2.webp" srcset="images/thumbs/rooms-interior-2.webp 720w, images/rooms-interior-2.webp 1280w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Интерьер с панорамным остеклением" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="facade" data-full="images/banya-2.webp" data-caption="Баня у воды, фасад"><img src="images/banya-2.webp" srcset="images/thumbs/banya-2.webp 720w, images/banya-2.webp 1537w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Баня у воды" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="build" data-full="images/construction-frame.webp" data-caption="Каркас и панорамные окна на этапе стройки"><img src="images/construction-frame.webp" srcset="images/thumbs/construction-frame.webp 720w, images/construction-frame.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Каркас на этапе строительства" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="site" data-full="images/territory-dock.webp" data-caption="Причал на пруду"><img src="images/territory-dock.webp" srcset="images/thumbs/territory-dock.webp 720w, images/territory-dock.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Деревянный причал на воде" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="interior" data-full="images/construction-stairs.webp" data-caption="Лестница и внутренняя отделка"><img src="images/construction-stairs.webp" srcset="images/thumbs/construction-stairs.webp 720w, images/construction-stairs.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Лестница и отделка интерьера" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="facade" data-full="images/villa-render.webp" data-caption="Визуализация виллы"><img src="images/villa-render.webp" srcset="images/thumbs/villa-render.webp 720w, images/villa-render.webp 1280w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Визуализация проекта виллы" loading="lazy"></button>
+        <button type="button" class="g-item g-wide" data-filter="site" data-full="images/lake-view.webp" data-caption="Вид на пруд и лес с кровли"><img src="images/lake-view.webp" srcset="images/thumbs/lake-view.webp 720w, images/lake-view.webp 960w" sizes="(max-width:560px) 100vw, (max-width:900px) 50vw, 380px" alt="Вид на пруд и лес" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="build" data-full="images/joint-detail.webp" data-caption="Деталь бревенчатого соединения"><img src="images/joint-detail.webp" srcset="images/thumbs/joint-detail.webp 720w, images/joint-detail.webp 1151w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Деревянное соединение сруба" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="build" data-full="images/gallery-17.webp" data-caption="Кровельные работы"><img src="images/gallery-17.webp" srcset="images/thumbs/gallery-17.webp 720w, images/gallery-17.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Кровельные работы" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="site" data-full="images/territory-sign.webp" data-caption="Адресная табличка комплекса"><img src="images/territory-sign.webp" srcset="images/thumbs/territory-sign.webp 720w, images/territory-sign.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Адресная табличка" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="facade" data-full="images/banya-porch.webp" data-caption="Терраса бани с массивными опорами"><img src="images/banya-porch.webp" srcset="images/thumbs/banya-porch.webp 720w, images/banya-porch.webp 1086w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Терраса бани" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="build" data-full="images/gallery-15.webp" data-caption="Деревянные конструкции крыши"><img src="images/gallery-15.webp" srcset="images/thumbs/gallery-15.webp 720w, images/gallery-15.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Деревянные конструкции" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="site" data-full="images/gallery-10.webp" data-caption="Дорога и подъезд к участку"><img src="images/gallery-10.webp" srcset="images/thumbs/gallery-10.webp 720w, images/gallery-10.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Подъездная дорога" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="interior" data-full="images/rooms-interior-3.webp" data-caption="Интерьер номера, вид на территорию"><img src="images/rooms-interior-3.webp" srcset="images/thumbs/rooms-interior-3.webp 720w, images/rooms-interior-3.webp 1280w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Интерьер номера" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="facade" data-full="images/rooms-3.webp" data-caption="Кровля корпуса с номерами"><img src="images/rooms-3.webp" srcset="images/thumbs/rooms-3.webp 720w, images/rooms-3.webp 1280w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Кровля корпуса с номерами" loading="lazy"></button>
+        <button type="button" class="g-item" data-filter="site" data-full="images/gallery-18.webp" data-caption="Территория комплекса"><img src="images/gallery-18.webp" srcset="images/thumbs/gallery-18.webp 720w, images/gallery-18.webp 960w" sizes="(max-width:560px) 50vw, (max-width:900px) 25vw, 190px" alt="Территория комплекса" loading="lazy"></button>
       </div>
     </div>
   </section>
@@ -540,7 +591,7 @@
   <!-- CLOSING CTA -->
   <section class="section closing" id="contact">
     <div class="closing-media">
-      <img src="images/villa-render.jpg" alt="Визуализация проекта виллы SVIDNO HOUSE на закате">
+      <img src="images/villa-render.webp" alt="Визуализация проекта виллы SVIDNO HOUSE на закате">
       <div class="hero-scrim closing-scrim"></div>
     </div>
     <div class="wrap closing-inner">
@@ -570,10 +621,10 @@
 
 <!-- LIGHTBOX -->
 <div class="lightbox" id="lightbox" aria-hidden="true">
-  <button class="lb-close" id="lbClose" aria-label="Закрыть">✕</button>
-  <button class="lb-prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
+  <button type="button" class="lb-close" id="lbClose" aria-label="Закрыть">✕</button>
+  <button type="button" class="lb-prev" id="lbPrev" aria-label="Предыдущее фото">‹</button>
   <img src="" alt="" id="lbImage">
-  <button class="lb-next" id="lbNext" aria-label="Следующее фото">›</button>
+  <button type="button" class="lb-next" id="lbNext" aria-label="Следующее фото">›</button>
   <p class="lb-caption" id="lbCaption"></p>
 </div>
 
@@ -592,9 +643,9 @@
   </div>
   <p class="chat-panel-sub">Выберите канал — ответим напрямую, без форм и ожидания на почте.</p>
   <div class="chat-options">
-    <a class="chat-option" href="https://t.me/stroyvidno" target="_blank" rel="noopener">
+    <a class="chat-option" href="https://t.me/ISMAIL778899" target="_blank" rel="noopener">
       <span class="chat-option-name">Telegram</span>
-      <span class="chat-option-desc">@stroyvidno</span>
+      <span class="chat-option-desc">@ISMAIL778899</span>
     </a>
     <a class="chat-option" href="tel:+375292017046">
       <span class="chat-option-name">Позвонить</span>
@@ -624,6 +675,7 @@
     <h3 id="privacyTitle">Cookies и конфиденциальность</h3>
     <p>Сайт сам по себе не устанавливает аналитических или рекламных cookie.</p>
     <p>Карта расположения объекта встроена через Google Maps и загружается только после вашего клика на кнопку «Показать карту» — до этого момента сторонние cookie от Google не ставятся. После загрузки карты действует политика конфиденциальности Google.</p>
+    <p>Видеообзор встроен через YouTube (режим youtube-nocookie) и загружается только после нажатия на превью. Ролик с дрона размещён на самом сайте и сторонних cookie не ставит.</p>
     <p>Шрифты страницы подключаются с серверов Google Fonts — при загрузке страницы браузер обращается к ним напрямую.</p>
     <p>По вопросам данных — напишите нам через раздел «Написать нам».</p>
   </div>

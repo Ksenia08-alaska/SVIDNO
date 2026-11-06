@@ -398,6 +398,8 @@
         var show = filter === "all" || item.getAttribute("data-filter") === filter;
         item.classList.toggle("is-hidden", !show);
       });
+      var grid = document.getElementById("galleryGrid");
+      if (grid) grid.classList.toggle("is-filtered", filter !== "all");
     });
   });
 
@@ -412,7 +414,6 @@
   var currentIndex = -1;
 
   function openLightbox(index){
-    var visible = galleryList.filter(function(el){ return !el.classList.contains("is-hidden"); });
     var item = galleryList[index];
     if (!item) return;
     currentIndex = index;
@@ -450,7 +451,7 @@
     });
   }
   document.addEventListener("keydown", function(e){
-    if (!lightbox.classList.contains("is-open")) return;
+    if (!lightbox || !lightbox.classList.contains("is-open")) return;
     if (e.key === "Escape") closeLightbox();
     if (e.key === "ArrowLeft") showRelative(-1);
     if (e.key === "ArrowRight") showRelative(1);
@@ -565,5 +566,208 @@
     if (chatPanel && chatPanel.classList.contains("is-open")) closeChat();
     if (privacyModal && privacyModal.classList.contains("is-open")) closePrivacy();
   });
+
+  /* ---------- Aerial reel: silent, endless, cross-faded drone clips ----------
+     Two <video> elements take turns: one plays, the other quietly loads the
+     next clip, then they cross-fade. Every clip is a different shot, played
+     once per cycle, so nothing repeats until the whole sequence loops. */
+  var reel = document.getElementById("reel");
+  if (reel){
+    var reelVids = reel.querySelectorAll(".reel-video");
+    var reelSegs = Array.prototype.slice.call(reel.querySelectorAll(".reel-seg"));
+    var reelToggle = document.getElementById("reelToggle");
+    var reelStage = document.getElementById("reelStage");
+    var reelCount = document.getElementById("reelCount");
+    var reelTitle = document.getElementById("reelTitle");
+    var FADE = 0.9;                 // seconds of cross-fade overlap
+    var cur = 0;                    // index of the clip on screen
+    var front = 0;                  // which <video> element is visible
+    var userPaused = reduceMotion;  // respect "reduce motion": start paused
+    var inView = false;
+    var started = false;
+    var switching = false;
+    var rafId = null;
+
+    var conn = navigator.connection || {};
+    var useSd = window.matchMedia("(max-width:760px)").matches || conn.saveData ||
+                /(^|-)2g$|^3g$/.test(conn.effectiveType || "");
+
+    for (var v = 0; v < reelVids.length; v++){
+      reelVids[v].muted = true;
+      reelVids[v].defaultMuted = true;
+      reelVids[v].setAttribute("muted", "");
+      reelVids[v].setAttribute("playsinline", "");
+      reelVids[v].setAttribute("webkit-playsinline", "");
+      reelVids[v].disablePictureInPicture = true;
+    }
+
+    function clipSrc(i){
+      var s = reelSegs[i];
+      return (useSd ? s.getAttribute("data-src-sd") : null) || s.getAttribute("data-src");
+    }
+    function pad(n){ return (n < 10 ? "0" : "") + n; }
+    function setCaption(i){
+      reelTitle.classList.add("is-switching");
+      setTimeout(function(){
+        reelCount.textContent = pad(i + 1) + " / " + pad(reelSegs.length);
+        reelTitle.textContent = reelSegs[i].getAttribute("data-title");
+        reelTitle.classList.remove("is-switching");
+      }, 220);
+    }
+    function paintSegments(i){
+      reelSegs.forEach(function(s, k){
+        s.classList.toggle("is-done", k < i);
+        s.classList.toggle("is-active", k === i);
+        s.querySelector("i").style.width = k < i ? "100%" : "0%";
+      });
+    }
+    function load(el, i){
+      if (el.getAttribute("data-idx") === String(i)) return;
+      el.setAttribute("data-idx", i);
+      el.poster = reelSegs[i].getAttribute("data-poster");
+      el.preload = "auto";
+      el.src = clipSrc(i);
+      el.load();
+    }
+    function tryPlay(el){
+      var p = el.play();
+      if (p && p.catch){
+        p.catch(function(err){
+          // autoplay blocked (e.g. iOS Low Power Mode): show the play button.
+          // Other errors (AbortError while switching clips) are harmless.
+          if (!err || err.name !== "NotAllowedError") return;
+          userPaused = true;
+          reel.classList.add("is-paused");
+          reelToggle.setAttribute("aria-label", "Смотреть");
+        });
+      }
+    }
+    function tick(){
+      var el = reelVids[front];
+      if (el.duration){
+        var bar = reelSegs[cur].querySelector("i");
+        bar.style.width = Math.min(el.currentTime / el.duration * 100, 100) + "%";
+        if (!switching && el.duration - el.currentTime <= FADE) next();
+      }
+      rafId = requestAnimationFrame(tick);
+    }
+    function startTick(){ if (!rafId) rafId = requestAnimationFrame(tick); }
+    function stopTick(){ if (rafId){ cancelAnimationFrame(rafId); rafId = null; } }
+
+    function show(i){
+      var back = 1 - front;
+      var incoming = reelVids[back];
+      var outgoing = reelVids[front];
+      switching = true;
+      load(incoming, i);
+      incoming.currentTime = 0;
+      cur = i;
+      front = back;
+      paintSegments(i);
+      setCaption(i);
+      incoming.classList.add("is-active");
+      outgoing.classList.remove("is-active");
+      if (!userPaused && inView) tryPlay(incoming);
+      clearTimeout(show.t);
+      show.t = setTimeout(function(){
+        switching = false;
+        var hidden = reelVids[1 - front];
+        hidden.pause();
+        // pre-load the following clip into the now hidden element
+        load(hidden, (cur + 1) % reelSegs.length);
+      }, FADE * 1000 + 100);
+    }
+    function next(){ show((cur + 1) % reelSegs.length); }
+    function prev(){ show((cur - 1 + reelSegs.length) % reelSegs.length); }
+
+    function resume(){
+      if (userPaused || !inView) return;
+      tryPlay(reelVids[front]);
+      startTick();
+    }
+    function pauseNow(){
+      reelVids[0].pause(); reelVids[1].pause();
+      stopTick();
+    }
+    function setUserPaused(p){
+      userPaused = p;
+      reel.classList.toggle("is-paused", p);
+      reelToggle.setAttribute("aria-label", p ? "Смотреть" : "Пауза");
+      if (p) pauseNow(); else resume();
+    }
+
+    function begin(){
+      if (started) return;
+      started = true;
+      load(reelVids[0], 0);
+      load(reelVids[1], 1);
+      paintSegments(0);
+      if (userPaused) reel.classList.add("is-paused");
+      resume();
+    }
+
+    reelToggle.addEventListener("click", function(){ setUserPaused(!userPaused); });
+    reelStage.addEventListener("click", function(){ setUserPaused(!userPaused); });
+    reelSegs.forEach(function(s, k){
+      s.addEventListener("click", function(){
+        if (!started) begin();
+        if (k !== cur) show(k);
+        if (userPaused) setUserPaused(false);
+      });
+    });
+
+    // swipe left/right on touch screens
+    var touchX = null;
+    reel.addEventListener("touchstart", function(e){ touchX = e.touches[0].clientX; }, { passive:true });
+    reel.addEventListener("touchend", function(e){
+      if (touchX === null) return;
+      var dx = e.changedTouches[0].clientX - touchX;
+      touchX = null;
+      if (Math.abs(dx) > 50){ if (dx < 0) next(); else prev(); }
+    }, { passive:true });
+
+    // keep the clip running: if a frame stalls on a slow connection, just wait
+    for (var w = 0; w < reelVids.length; w++){
+      reelVids[w].addEventListener("ended", function(e){
+        if (e.target === reelVids[front] && !switching) next();
+      });
+    }
+
+    if ("IntersectionObserver" in window){
+      // start downloading shortly before the reel scrolls into view
+      new IntersectionObserver(function(entries, obs){
+        if (entries[0].isIntersecting){ begin(); obs.disconnect(); }
+      }, { rootMargin: "400px 0px" }).observe(reel);
+      // play only while visible to save battery and data
+      new IntersectionObserver(function(entries){
+        inView = entries[0].isIntersecting;
+        if (inView) resume(); else pauseNow();
+      }, { threshold: 0.2 }).observe(reel);
+    } else {
+      inView = true; begin();
+    }
+    document.addEventListener("visibilitychange", function(){
+      if (document.hidden) pauseNow(); else resume();
+    });
+
+    window.__pauseReel = function(){ setUserPaused(true); };
+  }
+
+  /* ---------- YouTube review: load the player only on click ---------- */
+  var ytLoad = document.getElementById("ytLoad");
+  var ytPlayer = document.getElementById("ytPlayer");
+  if (ytLoad && ytPlayer){
+    ytLoad.addEventListener("click", function(){
+      var id = ytPlayer.getAttribute("data-yt");
+      var iframe = document.createElement("iframe");
+      iframe.src = "https://www.youtube-nocookie.com/embed/" + id + "?autoplay=1&rel=0&playsinline=1&modestbranding=1";
+      iframe.title = "Видеообзор SVIDNO HOUSE";
+      iframe.allow = "autoplay; encrypted-media; picture-in-picture; fullscreen";
+      iframe.allowFullscreen = true;
+      ytPlayer.innerHTML = "";
+      ytPlayer.appendChild(iframe);
+      if (window.__pauseReel) window.__pauseReel();
+    });
+  }
 
 })();
