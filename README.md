@@ -14,9 +14,9 @@ js/main.js            интерактив: меню, вкладки, галер
 images/*.webp         фото в полном размере
 images/thumbs/*.webp  уменьшенные копии (720 px) для сеток и превью
 images/hero.jpg       картинка для превью ссылки в мессенджерах (og:image)
-video/aerial-0N.mp4   6 кадров с дрона, без звука (HD для ПК)
-video/aerial-0N-sd.mp4  те же кадры облегчённые (для телефонов)
-video/aerial-0N.webp  первый кадр каждого ролика (постер)
+video/aerial-0N-hd.mp4  6 кадров с дрона, без звука (1920×1080 для ПК)
+video/aerial-0N-m.mp4   те же кадры 1280×720 (для телефонов)
+video/aerial-0N-poster.webp  первый кадр каждого ролика
 video/youtube-poster.webp  обложка видеообзора
 ```
 
